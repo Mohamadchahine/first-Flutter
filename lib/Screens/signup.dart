@@ -9,6 +9,12 @@ class signUp extends StatefulWidget {
 }
 
 class _signUpState extends State<signUp> {
+  TextEditingController name = TextEditingController(); //for getting name
+  TextEditingController email = TextEditingController(); //for getting email
+  TextEditingController phonenumber =
+      TextEditingController(); //for getting phone number
+  TextEditingController pass = TextEditingController(); //for getting password
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +42,12 @@ class _signUpState extends State<signUp> {
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: TextField(
+              controller: name,
+              onChanged: (vname) {
+                setState(() {
+                  name.text = vname;
+                });
+              },
               decoration: InputDecoration(
                   label: Text(
                     "Full Name",
@@ -63,6 +75,12 @@ class _signUpState extends State<signUp> {
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: TextField(
+              controller: email,
+              onChanged: (vmail) {
+                setState(() {
+                  email.text = vmail;
+                });
+              },
               decoration: InputDecoration(
                   label: Text(
                     "E-mail",
@@ -89,6 +107,12 @@ class _signUpState extends State<signUp> {
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: TextField(
+              controller: phonenumber,
+              onChanged: (vphone) {
+                setState(() {
+                  phonenumber.text = vphone;
+                });
+              },
               decoration: InputDecoration(
                   label: Text(
                     "Phone Number",
@@ -145,6 +169,12 @@ class _signUpState extends State<signUp> {
             padding: const EdgeInsets.all(15.0),
             child: TextField(
               obscureText: true,
+              controller: pass,
+              onChanged: (vpass) {
+                setState(() {
+                  pass.text = vpass;
+                });
+              },
               decoration: InputDecoration(
                   prefixIcon: Icon(Icons.remove_red_eye),
                   label: Text(
@@ -168,8 +198,11 @@ class _signUpState extends State<signUp> {
                       primary: const Color.fromARGB(255, 68, 67, 66)),
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (BuildContext context) =>
-                            const profilePage()));
+                        builder: (BuildContext context) => profilePage(
+                              name: name.text,
+                              email: email.text,
+                              phone: phonenumber.text,
+                            )));
                   },
                   child: const Text(
                     "Join Now",
