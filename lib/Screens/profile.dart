@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projectone/Screens/home.dart';
 
 class profilePage extends StatefulWidget {
-  final String name;
-  final String email;
-  final String phone;
-  profilePage({required this.name, required this.email, required this.phone});
+  profilePage({super.key});
 
   @override
   State<profilePage> createState() => _profilePageState();
@@ -15,30 +12,28 @@ class _profilePageState extends State<profilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 226, 226, 224),
+      backgroundColor: const Color.fromARGB(255, 226, 226, 224),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //profile pic
-            Center(
+            const Center(
               child: Padding(
-                padding: const EdgeInsets.only(top: 50.0, bottom: 50),
-                child: CircleAvatar(
-                  radius: 100,
-                  backgroundImage: NetworkImage(
-                      "https://media.istockphoto.com/id/1207217852/vector/programming-testing-app-on-different-devices-creation-software-and-coding-internet-pages-for.jpg?s=612x612&w=0&k=20&c=84TPoTRyO589B5rh1WvW0EQDbbPN_0ITkMsAO5ENz2g="),
-                ),
-              ),
+                  padding: EdgeInsets.only(top: 50.0, bottom: 50),
+                  child: CircleAvatar(
+                    radius: 100,
+                    backgroundImage: AssetImage("assets/images/photo1.jpg"),
+                  )),
             ),
 
             //name
             Padding(
-              padding: EdgeInsets.only(left: 20.0, top: 10.0),
+              padding: const EdgeInsets.only(left: 20.0, top: 10.0),
               child: Text(
-                "Full Name:" + widget.name,
-                style: TextStyle(
+                "Full Name:",
+                style: const TextStyle(
                   color: Colors.black87,
                   fontSize: 20,
                 ),
@@ -47,10 +42,10 @@ class _profilePageState extends State<profilePage> {
 
             //E-mail:
             Padding(
-              padding: EdgeInsets.only(left: 20.0, top: 10.0),
+              padding: const EdgeInsets.only(left: 20.0, top: 10.0),
               child: Text(
-                "E-mail:" + widget.email,
-                style: TextStyle(
+                "E-mail:",
+                style: const TextStyle(
                   color: Colors.black87,
                   fontSize: 20,
                 ),
@@ -60,10 +55,10 @@ class _profilePageState extends State<profilePage> {
             //Phone Number:
 
             Padding(
-              padding: EdgeInsets.only(left: 20.0, top: 10.0),
+              padding: const EdgeInsets.only(left: 20.0, top: 10.0),
               child: Text(
-                "Phone Number:" + widget.phone,
-                style: TextStyle(
+                "Phone Number:",
+                style: const TextStyle(
                   color: Colors.black87,
                   fontSize: 20,
                 ),

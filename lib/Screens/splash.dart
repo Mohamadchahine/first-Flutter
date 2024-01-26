@@ -28,8 +28,7 @@ class _splashScreenState extends State<splashScreen> {
         alignment: Alignment.center,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: NetworkImage(
-                "https://pics.craiyon.com/2023-11-10/obriSQjoQo6Cqe73qPqihw.webp"),
+            image: AssetImage("assets/images/splashphoto.webp"),
             fit: BoxFit.cover,
           ),
         ),

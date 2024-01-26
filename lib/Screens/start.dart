@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projectone/Screens/login.dart';
 import 'package:projectone/Screens/signup.dart';
 
 class startScreen extends StatefulWidget {
@@ -12,19 +13,20 @@ class _startScreenState extends State<startScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SingleChildScrollView(
           child: Column(
         children: [
-          Image.network(
-              "https://media.istockphoto.com/id/1207217852/vector/programming-testing-app-on-different-devices-creation-software-and-coding-internet-pages-for.jpg?s=612x612&w=0&k=20&c=84TPoTRyO589B5rh1WvW0EQDbbPN_0ITkMsAO5ENz2g="),
+          Image.asset("assets/images/photo1.jpg"),
           const Padding(
             padding: EdgeInsets.all(15.0),
             child: Text(
               "Welcome to the world of Programmers",
               style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold),
+                fontSize: 30,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
             ),
           ),
           const Padding(
@@ -55,7 +57,24 @@ class _startScreenState extends State<startScreen> {
                     TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: InkWell(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => const loginPage()));
+              },
+              child: Text(
+                "or Login Now ",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.blue,
+                ),
+              ),
+            ),
+          ),
         ],
       )),
     );
