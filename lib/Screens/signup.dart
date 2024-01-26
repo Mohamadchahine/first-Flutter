@@ -40,14 +40,20 @@ class _signUpState extends State<signUp> {
   ) async {
     try {
       List<String> users = [];
+      varified = true;
+      varpass = true;
 
       await FirebaseFirestore.instance.collection("Users").get().then((value) {
         for (var i = 0; i < value.docs.length; i++) {
           users.add(value.docs[i]['Username']);
         }
       });
-
-      if (users.contains(Username) == true ) {
+      if (password != cpassword) {
+        setState(() {
+          varpass = false;
+        });
+      }
+      if (users.contains(Username) == true || varpass == false) {
         setState(() {
           varified = false;
         });
