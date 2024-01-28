@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:projectone/Screens/Users.dart';
 import 'package:projectone/Screens/profile.dart';
 import 'package:projectone/Widgets/textfld.dart';
 
@@ -73,7 +74,8 @@ class _signUpState extends State<signUp> {
           "uid": userCredential.user?.uid.toString(),
         });
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (BuildContext context) => profilePage()));
+            builder: (BuildContext context) =>
+                usersScreen(id: userCredential.user!.uid.toString())));
         return userCredential;
       }
     } on FirebaseAuthException catch (e) {

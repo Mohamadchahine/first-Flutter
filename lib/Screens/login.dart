@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:projectone/Screens/Users.dart';
 import 'package:projectone/Screens/profile.dart';
+import 'package:projectone/Screens/signup.dart';
+import 'package:projectone/Screens/start.dart';
 import 'package:projectone/Widgets/textfld.dart';
 
 class loginPage extends StatefulWidget {
@@ -22,7 +25,7 @@ class _loginPageState extends State<loginPage> {
           .signInWithEmailAndPassword(email: email, password: password);
       User? user = userCredential.user;
       Navigator.of(context).push(
-          MaterialPageRoute(builder: (BuildContext context) => profilePage()));
+          MaterialPageRoute(builder: (BuildContext context) => usersScreen(id: user!.uid.toString())));
       return userCredential;
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -51,7 +54,7 @@ class _loginPageState extends State<loginPage> {
                 child: textfld(
                     label: "E-mail:",
                     controller: email,
-                    iconn: Icon(Icons.mail),
+                    iconn: const Icon(Icons.mail),
                     obscure: false)),
           ),
 
@@ -62,7 +65,7 @@ class _loginPageState extends State<loginPage> {
                 child: textfld(
                     label: "Password:",
                     controller: pass,
-                    iconn: Icon(Icons.visibility_off),
+                    iconn: const Icon(Icons.visibility_off),
                     obscure: true)),
           ),
           const SizedBox(
@@ -100,7 +103,67 @@ class _loginPageState extends State<loginPage> {
                 ),
               ),
             ),
-          )
+          ),
+          const Center(
+            child: Text(
+              "Dont have an Account?",
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: SizedBox(
+                height: 50,
+                width: 250,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      primary: const Color.fromARGB(255, 68, 67, 66)),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (BuildContext context) => const signUp()));
+                  },
+                  child: const Text(
+                    "Create Account",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ),
+          ),
+
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: InkWell(
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => const startScreen()));
+                },
+                child: const Row(
+                  children: [
+                    SizedBox(
+                      width: 130,
+                    ),
+                    Text(
+                      "App Info ",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Icon(Icons.info),
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
       )),
     );

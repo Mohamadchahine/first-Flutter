@@ -41,40 +41,6 @@ class _startScreenState extends State<startScreen> {
               textAlign: TextAlign.center,
             ),
           ),
-          SizedBox(
-            height: 50,
-            width: 250,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  primary: const Color.fromARGB(255, 68, 67, 66)),
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => const signUp()));
-              },
-              child: const Text(
-                "Join Now",
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: InkWell(
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => const loginPage()));
-              },
-              child: Text(
-                "or Login Now ",
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.blue,
-                ),
-              ),
-            ),
-          ),
         ],
       )),
     );

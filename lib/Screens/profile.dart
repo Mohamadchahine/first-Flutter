@@ -1,14 +1,41 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:projectone/Screens/home.dart';
 
 class profilePage extends StatefulWidget {
-  profilePage({super.key});
+  final String id;
+
+  String? name;
+  String? phone;
+  String? email;
+  profilePage({super.key, required this.id});
 
   @override
   State<profilePage> createState() => _profilePageState();
 }
 
 class _profilePageState extends State<profilePage> {
+  getData() async {
+    QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+        .collection("Users")
+        .where("uid", isEqualTo: widget.id)
+        .get();
+
+    if (querySnapshot.docs.isNotEmpty) {
+      setState(() {
+        widget.name = querySnapshot.docs[0]["Name"];
+        widget.phone = querySnapshot.docs[0]["Phone_Number"];
+        widget.email = querySnapshot.docs[0]["E-mail"];
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +59,7 @@ class _profilePageState extends State<profilePage> {
             Padding(
               padding: const EdgeInsets.only(left: 20.0, top: 10.0),
               child: Text(
-                "Full Name:",
+                "Full Name: ${widget.name}",
                 style: const TextStyle(
                   color: Colors.black87,
                   fontSize: 20,
@@ -44,7 +71,7 @@ class _profilePageState extends State<profilePage> {
             Padding(
               padding: const EdgeInsets.only(left: 20.0, top: 10.0),
               child: Text(
-                "E-mail:",
+                "E-mail: ${widget.email}",
                 style: const TextStyle(
                   color: Colors.black87,
                   fontSize: 20,
@@ -57,7 +84,7 @@ class _profilePageState extends State<profilePage> {
             Padding(
               padding: const EdgeInsets.only(left: 20.0, top: 10.0),
               child: Text(
-                "Phone Number:",
+                "Phone Number: ${widget.phone}",
                 style: const TextStyle(
                   color: Colors.black87,
                   fontSize: 20,
