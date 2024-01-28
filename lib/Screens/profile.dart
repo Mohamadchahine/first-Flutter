@@ -104,7 +104,7 @@ class _profilePageState extends State<profilePage> {
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (BuildContext context) =>
-                              const homeScreen()));
+                              homeScreen(id: widget.id)));
                     },
                     child: const Text(
                       "Home Screen",

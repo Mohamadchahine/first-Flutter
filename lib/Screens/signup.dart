@@ -73,7 +73,7 @@ class _signUpState extends State<signUp> {
           "Password": password,
           "uid": userCredential.user?.uid.toString(),
         });
-        Navigator.of(context).push(MaterialPageRoute(
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (BuildContext context) =>
                 usersScreen(id: userCredential.user!.uid.toString())));
         return userCredential;

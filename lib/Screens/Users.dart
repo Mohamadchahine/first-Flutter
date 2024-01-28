@@ -48,16 +48,22 @@ class _usersScreenState extends State<usersScreen> {
           ),
         ],
       ),
-      body: GridView.builder(
-          itemCount: data.length,
-          gridDelegate:
-              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
-          itemBuilder: (context, i) {
-            return userList(
-                Name: "${data[i]['Name']}",
-                Phone: "${data[i]['Phone_Number']}",
-                Email: "${data[i]['E-mail']}");
-          }),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: GridView.builder(
+            itemCount: data.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 1,
+              mainAxisSpacing: 15,
+              mainAxisExtent: 150,
+            ),
+            itemBuilder: (context, i) {
+              return userList(
+                  Name: "${data[i]['Name']}",
+                  Phone: "${data[i]['Phone_Number']}",
+                  Email: "${data[i]['E-mail']}");
+            }),
+      ),
     );
   }
 }
